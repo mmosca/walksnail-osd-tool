@@ -76,11 +76,11 @@ jobs:
 
       - name: Build (Windows)
         if: ${{ matrix.targets.name == 'windows64'}}
-        run: cargo build --release --features windows-installer
+        run: cargo update && cargo build --release --features windows-installer
 
       - name: Build (MacOS)
         if: ${{ matrix.targets.name == 'macos-intel' || matrix.targets.name == 'macos-arm'}}
-        run: cargo build --release --target ${{ matrix.targets.target }} --features macos-app-bundle
+        run: cargo update && cargo build --release --target ${{ matrix.targets.target }} --features macos-app-bundle
 
       - name: Extract ffmpeg
         run: |
